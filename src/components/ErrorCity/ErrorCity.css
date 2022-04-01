@@ -1,15 +1,15 @@
-.error img{
-    width: 100%;
+.error img {
+  width: 100%;
 }
 
 .error {
-    text-align: center;
+  text-align: center;
 }
 
-.error h2{
-    margin: 1rem;
-    font-size: 2rem;
-    color: red;
-    text-align: center;
-    text-transform: capitalize;
+.error h2 {
+  margin: 1rem;
+  font-size: 2rem;
+  color: red;
+  text-align: center;
+  text-transform: capitalize;
 }

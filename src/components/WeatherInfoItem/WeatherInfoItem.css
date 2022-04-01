@@ -1,4 +1,11 @@
-.weatherInfo{
-    display: flex;
-    justify-content: space-between;
+.weatherInfo {
+  display: flex;
+  justify-content: flex-start;
+  font-weight: 400;
+}
+.temp {
+  color: #cf136b;
+}
+h2 {
+  margin: 4px;
 }

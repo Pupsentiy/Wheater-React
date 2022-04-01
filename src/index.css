@@ -2,35 +2,87 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: grey;
+  background-color: #104e8b;
+  height: 100%;
+  font-family: sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.app{
+.containerBody {
+  display: flex;
   max-width: 1200px;
-  margin: 0 auto;
+  max-height: 850px;
+  justify-content: space-evenly;
+  background-color: #f5fffa;
+  border-radius: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }
 
-.searchBox{
+.appOne {
+  background: url(./assets/images/bgMaps.jpg) no-repeat 50% 40% / cover;
+  width: 50%;
+  height: 100vh;
+  border-radius: 25px;
+  max-height: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appTwo {
+  width: 50%;
+  height: 100vh;
+  max-height: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  box-shadow: 0px 1px 4px 0px #cdc3c3;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: white;
+  width: 500px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.today {
+  text-align: center;
+}
+
+.containerBlockOne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  border-right: 1px solid darkgray;
+}
+
+.containerBlocktwo {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  color: darkgray;
+}
+
+.searchBox {
   display: flex;
   position: relative;
-  width: 400px;
-  height: 45px;
+  width: 220px;
+  height: 35px;
   margin: 0 auto;
 }
 
-.container{
-  display: flex;
-  max-width: 600px;
-  margin: 0 auto;
-  flex-direction: column;
+.icon {
+  width: 100px;
+  height: 100px;
 }
