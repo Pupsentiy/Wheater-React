@@ -1,18 +1,17 @@
-import React, { useEffect, useState} from 'react'
-import { Title, FormButton, FormInput, WeatherInfoItem, ErrorCity } from './components'
+import React, {useEffect, useState} from 'react'
+import { Title, FormInput, WeatherInfoItem, ErrorCity } from './components'
 import Button from '@mui/material/Button';
 import Moment from "react-moment";
 import './index.css'
-
-const API_KEY = 'f5c340f67db5b02bb40d79f20a1bc03e'
-const API = 'https://api.openweathermap.org/data/2.5/weather?'
-const API_URL_ICON = "http://openweathermap.org/img/wn/"
+import { CircleLoader } from 'react-spinners';
+import { API, API_KEY, API_URL_ICON } from './constants/api';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null)
   const [city, setCity] = useState('Saint Petersburg')
   const [errorMsg, setErrorMsg] = useState('')
   const [icon, setIcon] = useState(`${API_URL_ICON}10d@2x.png`)
+  const [loader, setLoader] = useState(false);
   
   const fetchWeather = (event) => {
     event?.preventDefault()
@@ -25,7 +24,7 @@ const App = () => {
         } else {
           setWeatherData(data)
           setErrorMsg('')
-          setIcon(`${API_URL_ICON + data.list[0].weather[0]["icon"]}@4x.png`)
+          setIcon(`${API_URL_ICON + `10d@2x.png`}`)
         }
       })
       .catch((err) => console.log(err))
@@ -33,21 +32,20 @@ const App = () => {
   }
  
   const searchInputHandler = (event) => {
+    setLoader(true)
     setTimeout(() => {
-      event.preventDefault()  
+      setLoader(false)
     setCity(event.target.value)
     }, 5000);
-    
   }
  
   const searchInputHandlerButton = (event) => {
-    event.preventDefault()
     setCity(event.target.innerText)
   }
 
-  useEffect(() => {
-    fetchWeather()
-  },[city])
+    useEffect(() => {
+      fetchWeather()
+    },[city])
 
   return (
     <div className='containerLeft'>
@@ -56,7 +54,6 @@ const App = () => {
         <form className='form' onSubmit={fetchWeather}>
           <div className='searchBox'>
             <FormInput onChange={searchInputHandler} placeholder="search city..." />
-            <FormButton />
           </div>
         </form>
         <div className='button_item'>
@@ -67,12 +64,13 @@ const App = () => {
         <Button variant="contained" type='submit' onClick={searchInputHandlerButton}>Paris</Button>
         </div>
       </div>
+
       <div className='appTwo'>
+      {loader === true ? <CircleLoader/> : <>
         {
           weatherData
           &&
-          (
-            <>
+          (<>
               <h1 className='today'>Today</h1>
               <div className="containerRight">
                 <div className='BoxLeft'>
@@ -90,14 +88,16 @@ const App = () => {
 
               </div>
             </>
-          )}
-
+          )}  
+            
         {
           errorMsg
           &&
           (
             <div className="container"><ErrorCity errorMsg={errorMsg} /></div>
           )}
+          </>
+        } 
       </div>
     </div>
   )
